@@ -1,11 +1,11 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    
     stages {
+	stage('SCM')
+	{
+		echo 'Pulling source from Git repo'
+		git branch: '${branch}', url:'https://github.com/OneBlueBird/ClassicJavaApp.git'
+	}
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
