@@ -1,5 +1,4 @@
 node {
-    stages {
 	stage('SCM')
 	{
 		echo 'Pulling source from Git repo'
@@ -25,5 +24,4 @@ node {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-    }
 }
